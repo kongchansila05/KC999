@@ -1,7 +1,8 @@
 import os
 import telebot
 import requests
-
+from keep_alive import keep_alive
+keep_alive()
 API_KEY = os.getenv('API_KEY',
                     '7627695687:AAFMXIBq1O2WqnnKx5V4-JXcflNv8HWjkjk')
 IMAGE_URL = "https://i.ibb.co/5sxj6wj/KC-2.jpg"
