@@ -168,4 +168,4 @@ def send_contact_info(message):
     bot.send_photo(chat_id, photo=IMAGE_URL, caption=caption)
 
 if __name__ == '__main__':
-bot.polling()
+  bot.polling()
