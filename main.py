@@ -10,7 +10,8 @@ bot = telebot.TeleBot(API_KEY)
 
 url_register = "https://api.cc24.live/api/cs_player/register"
 url_login = "https://api.cc24.live/api/cs_player/login_v2"
-
+caption = "សំរាប់ចម្ងល់ឬបញ្ហាផ្សេងៗ នឹង ដាក់/ដក ប្រាក់ ចុចទីនេះ 👉🏻  @KC999_CS  បញ្ជាក់៖ នេះជាម៉ាសុីនសម្រាប់តែបង្កើតអាខោន មិនចេះឆ្លើយតបទេ។ សូមអរគុណ!"
+domain = 'kc999.co
 
 def get_ip():
     # Using a free IP API to get the client's public IP
@@ -30,7 +31,7 @@ def send_welcome(message):
     data_register = {
         "username": full_name,
         "password": password,
-        "domain": 'kc999.co',
+        "domain": domain,
         "phone": '',
         "currencyId": '3',
     }
@@ -38,7 +39,7 @@ def send_welcome(message):
     data_login = {
         "username": full_name,
         "password": password,
-        "domain": 'kc999.co',
+        "domain": domain,
         "clientIP": get_ip(),
     }
 
@@ -62,7 +63,6 @@ def send_welcome(message):
                 parse_mode="Markdown")
             bot.send_message(chat_id,
                              f"Login: https://cc24.live?token={token}")
-            caption = "សំរាប់ចម្ងល់ឬបញ្ហាផ្សេងៗ នឹង ដាក់/ដក ប្រាក់ ចុចទីនេះ 👉🏻  @KC999_CS  បញ្ជាក់៖ នេះជាម៉ាសុីនសម្រាប់តែបង្កើតអាខោន មិនចេះឆ្លើយតបទេ។ សូមអរគុណ!"
             bot.send_photo(chat_id, photo=IMAGE_URL, caption=caption)
         return
     elif response_data.get('error') == "Duplicate username!":
@@ -87,7 +87,6 @@ def send_welcome(message):
                 token = return_login['data']['token']
                 bot.send_message(chat_id,
                                  f"Login: https://cc24.live?token={token}")
-                caption = "សំរាប់ចម្ងល់ឬបញ្ហាផ្សេងៗ នឹង ដាក់/ដក ប្រាក់ ចុចទីនេះ 👉🏻 @KC999_CS  បញ្ជាក់៖ នេះជាម៉ាសុីនសម្រាប់តែបង្កើតអាខោន មិនចេះឆ្លើយតបទេ។ សូមអរគុណ!"
                 bot.send_photo(chat_id, photo=IMAGE_URL, caption=caption)
 
 
@@ -101,7 +100,7 @@ def send_register(message):
     data_register = {
         "username": full_name,
         "password": password,
-        "domain": 'kc999.co',
+        "domain": domain,
         "phone": '',
         "currencyId": '3',
     }
@@ -109,7 +108,7 @@ def send_register(message):
     data_login = {
         "username": full_name,
         "password": password,
-        "domain": 'kc999.co',
+        "domain": domain,
         "clientIP": get_ip(),
     }
 
@@ -133,7 +132,6 @@ def send_register(message):
                 parse_mode="Markdown")
             bot.send_message(chat_id,
                              f"Login: https://cc24.live?token={token}")
-            caption = "សំរាប់ចម្ងល់ឬបញ្ហាផ្សេងៗ នឹង ដាក់/ដក ប្រាក់ ចុចទីនេះ 👉🏻  @KC999_CS  បញ្ជាក់៖ នេះជាម៉ាសុីនសម្រាប់តែបង្កើតអាខោន មិនចេះឆ្លើយតបទេ។ សូមអរគុណ!"
             bot.send_photo(chat_id, photo=IMAGE_URL, caption=caption)
         return
     elif response_data.get('error') == "Duplicate username!":
@@ -158,18 +156,12 @@ def send_register(message):
                 token = return_login['data']['token']
                 bot.send_message(chat_id,
                                  f"Login: https://cc24.live?token={token}")
-                caption = "សំរាប់ចម្ងល់ឬបញ្ហាផ្សេងៗ នឹង ដាក់/ដក ប្រាក់ ចុចទីនេះ 👉🏻 @KC999_CS  បញ្ជាក់៖ នេះជាម៉ាសុីនសម្រាប់តែបង្កើតអាខោន មិនចេះឆ្លើយតបទេ។ សូមអរគុណ!"
                 bot.send_photo(chat_id, photo=IMAGE_URL, caption=caption)
 
 
 @bot.message_handler(commands=['contact'])
 def send_contact_info(message):
     chat_id = message.chat.id  # Get the chat ID to send the message directly
-
-    # Caption for the photo
-    caption = "សំរាប់ចម្ងល់ឬបញ្ហាផ្សេងៗ នឹង ដាក់/ដក ប្រាក់ ចុចទីនេះ 👉🏻 @KC999_CS  បញ្ជាក់៖ នេះជាម៉ាសុីនសម្រាប់តែបង្កើតអាខោន មិនចេះឆ្លើយតបទេ។ សូមអរគុណ!"
-
-    # Send the photo with the caption
     bot.send_photo(chat_id, photo=IMAGE_URL, caption=caption)
 
 if __name__ == '__main__':
