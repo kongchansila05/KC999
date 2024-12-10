@@ -11,7 +11,7 @@ bot = telebot.TeleBot(API_KEY)
 url_register = "https://api.cc24.live/api/cs_player/register"
 url_login = "https://api.cc24.live/api/cs_player/login_v2"
 caption = "សំរាប់ចម្ងល់ឬបញ្ហាផ្សេងៗ នឹង ដាក់/ដក ប្រាក់ ចុចទីនេះ 👉🏻  @KC999_CS  បញ្ជាក់៖ នេះជាម៉ាសុីនសម្រាប់តែបង្កើតអាខោន មិនចេះឆ្លើយតបទេ។ សូមអរគុណ!"
-domain = 'kc999.co
+domain = 'kc999.co'
 
 def get_ip():
     # Using a free IP API to get the client's public IP
