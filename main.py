@@ -24,6 +24,7 @@ def get_ip():
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
+    chat_id = message.chat.id
     first_name = message.from_user.first_name or ""
     last_name = message.from_user.last_name or ""
     full_name = (first_name+last_name).strip()
