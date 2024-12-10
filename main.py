@@ -23,19 +23,21 @@ def get_ip():
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    chat_id = message.chat.id
+    first_name = message.from_user.first_name or ""
+    last_name = message.from_user.last_name or ""
+    full_name = (first_name+last_name).strip()
+    password = message.from_user.id
     data_register = {
-        "username": message.from_user.first_name,
-        "password": message.from_user.id,
+        "username": full_name,
+        "password": password,
         "domain": 'kc999.co',
         "phone": '',
         "currencyId": '3',
     }
 
     data_login = {
-        "username": message.from_user.first_name,
-        "password": message.from_user.id,
-        # "password": '801984912',
+        "username": full_name,
+        "password": password,
         "domain": 'kc999.co',
         "clientIP": get_ip(),
     }
@@ -55,8 +57,8 @@ def send_welcome(message):
             token = login['data']['token']
             bot.send_message(chat_id, f"អ្នកបង្កើត អាខោន ជោគជ័យ!")
             bot.send_message(
-                chat_id, f"Your account: `{message.from_user.first_name}`\n"
-                f"Your password: `{message.from_user.id}`\n",
+                chat_id, f"Your account: `{full_name}`\n"
+                f"Your password: `{password}`\n",
                 parse_mode="Markdown")
             bot.send_message(chat_id,
                              f"Login: https://cc24.live?token={token}")
@@ -79,8 +81,8 @@ def send_welcome(message):
                 bot.send_message(chat_id, f"អ្នកមាន អាខោន រួចហើយ!")
                 bot.send_message(
                     chat_id,
-                    f"Your account: `{message.from_user.first_name}`\n"
-                    f"Your password: `{message.from_user.id}`\n",
+                    f"Your account: `{full_name}`\n"
+                    f"Your password: `{password}`\n",
                     parse_mode="Markdown")
                 token = return_login['data']['token']
                 bot.send_message(chat_id,
@@ -92,18 +94,21 @@ def send_welcome(message):
 @bot.message_handler(commands=['register'])
 def send_register(message):
     chat_id = message.chat.id
+    first_name = message.from_user.first_name or ""
+    last_name = message.from_user.last_name or ""
+    full_name = (first_name+last_name).strip()
+    password = message.from_user.id
     data_register = {
-        "username": message.from_user.first_name,
-        "password": message.from_user.id,
+        "username": full_name,
+        "password": password,
         "domain": 'kc999.co',
         "phone": '',
         "currencyId": '3',
     }
 
     data_login = {
-        "username": message.from_user.first_name,
-        "password": message.from_user.id,
-        # "password": '801984912',
+        "username": full_name,
+        "password": password,
         "domain": 'kc999.co',
         "clientIP": get_ip(),
     }
@@ -123,8 +128,8 @@ def send_register(message):
             token = login['data']['token']
             bot.send_message(chat_id, f"អ្នកបង្កើត អាខោន ជោគជ័យ!")
             bot.send_message(
-                chat_id, f"Your account: `{message.from_user.first_name}`\n"
-                f"Your password: `{message.from_user.id}`\n",
+                chat_id, f"Your account: `{full_name}`\n"
+                f"Your password: `{password}`\n",
                 parse_mode="Markdown")
             bot.send_message(chat_id,
                              f"Login: https://cc24.live?token={token}")
@@ -147,8 +152,8 @@ def send_register(message):
                 bot.send_message(chat_id, f"អ្នកមាន អាខោន រួចហើយ!")
                 bot.send_message(
                     chat_id,
-                    f"Your account: `{message.from_user.first_name}`\n"
-                    f"Your password: `{message.from_user.id}`\n",
+                    f"Your account: `{full_name}`\n"
+                    f"Your password: `{password}`\n",
                     parse_mode="Markdown")
                 token = return_login['data']['token']
                 bot.send_message(chat_id,
